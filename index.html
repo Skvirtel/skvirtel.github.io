@@ -3,34 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Завод композитной арматуры ООО СтеклоПласт — Производство и продажа</title>
+    <title>Завод композитной арматуры ООО СтеклоПласт</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; color: #333; background: #f4f6f8; line-height: 1.6; }
-        header { background: #1a252f; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f1c40f; }
-        .hero { background: #1a252f; color: white; padding: 60px 20px; text-align: center; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        .btn { background: #e67e22; color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 4px; display: inline-block; margin-top: 15px; }
-        footer { background: #11181f; color: #7f8c8d; padding: 20px; text-align: center; font-size: 0.85rem; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
+        body { color: #333; background-color: #f4f6f8; line-height: 1.6; }
+        
+        /* Шапка сайта */
+        header { background: #1a252f; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #f1c40f; position: sticky; top: 0; z-index: 1000; }
+        header h2 { font-size: 1.5rem; }
+        header a { color: #f1c40f; text-decoration: none; font-weight: bold; font-size: 1.1rem; }
+        
+        /* Главный баннер */
+        .hero { background: linear-gradient(rgba(26, 37, 47, 0.85), rgba(26, 37, 47, 0.85)), url('https://unsplash.com') no-repeat center center/cover; color: white; padding: 80px 20px; text-align: center; }
+        .hero h1 { font-size: 2.3rem; margin-bottom: 15px; color: #fff; }
+        .hero p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px; color: #bdc3c7; }
+        
+        /* Сетка товаров */
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .section-title { text-align: center; margin-bottom: 40px; font-size: 2rem; color: #1a252f; position: relative; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: #e67e22; margin: 10px auto 0; }
+        
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        
+        /* Карточка товара */
+        .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #e1e8ed; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        
+        /* Заглушка под фото (стильные градиенты для строительной тематики) */
+        .product-image { height: 180px; background: linear-gradient(135deg, #2c3e50, #34495e); display: flex; align-items: center; justify-content: center; color: #f1c40f; font-size: 3rem; font-weight: bold; }
+        .img-links { background: linear-gradient(135deg, #e67e22, #d35400) !important; }
+        .img-mesh { background: linear-gradient(135deg, #27ae60, #2ecc71) !important; }
+        .img-clips { background: linear-gradient(135deg, #7f8c8d, #95a5a6) !important; }
+        
+        .product-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-info h3 { margin-bottom: 10px; color: #1a252f; font-size: 1.3rem; }
+        .product-info p { font-size: 0.95rem; color: #555; margin-bottom: 15px; flex-grow: 1; }
+        
+        .product-badge { display: inline-block; background: #f4f6f8; color: #2c3e50; padding: 4px 10px; font-size: 0.8rem; font-weight: bold; border-radius: 4px; margin-bottom: 15px; align-self: flex-start; border: 1px solid #dcdde1; }
+        
+        .btn-buy { background: #e67e22; color: white; text-align: center; padding: 10px; text-decoration: none; font-weight: bold; border-radius: 4px; transition: background 0.2s; margin-top: auto; display: block; }
+        .btn-buy:hover { background: #d35400; }
+        
+        /* Блок контактов */
+        .contacts-section { background: white; padding: 40px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid #1a252f; }
+        .contacts-section h3 { font-size: 1.6rem; margin-bottom: 15px; color: #1a252f; }
+        .contacts-section p { margin-bottom: 10px; font-size: 1.05rem; }
+        .main-phone { font-size: 1.8rem; font-weight: bold; color: #e67e22; text-decoration: none; display: inline-block; margin: 10px 0; }
+        
+        footer { background: #11181f; color: #7f8c8d; padding: 20px; text-align: center; font-size: 0.85rem; margin-top: 60px; }
     </style>
 </head>
 <body>
+
     <header>
         <h2>ООО <span style="color: #f1c40f;">СтеклоПласт</span></h2>
-        <a href="tel:88002227254" style="color: #f1c40f; text-decoration: none; font-weight: bold;">8 (800) 222-72-54</a>
+        <a href="tel:88002227254">8 (800) 222-72-54</a>
     </header>
+
     <section class="hero">
-        <h1>Композитные материалы от завода СтеклоПласт</h1>
-        <p>Производство стеклопластиковой арматуры, сеток и гибких связей в г. Волжском с доставкой по РФ.</p>
-        <a href="tel:88002227254" class="btn">Получить консультацию</a>
+        <h1>Каталог композитных материалов</h1>
+        <p>Инновационные решения для строительного сектора напрямую от завода-производителя в г. Волжском. Соответствие ГОСТу и гарантия долговечности.</p>
     </section>
+
     <div class="container">
-        <h3>Контакты отдела продаж</h3>
-        <p>Телефон: <strong>8 (800) 222-72-54</strong>, +7 (962) 761-55-08</p>
-        <p>Адрес: 404103, Волгоградская обл., г. Волжский, ул. им. Н.Д. Лопатникова, д. 25 Б</p>
-        <p>Email: <a href="mailto:info@stekloplast34.ru">info@stekloplast34.ru</a></p>
+        <h2 class="section-title">Наша продукция</h2>
+        
+        <div class="products-grid">
+            <!-- Товар 1 -->
+            <div class="product-card">
+                <div class="product-image">АКС</div>
+                <div class="product-info">
+                    <h3>Стеклопластиковая арматура</h3>
+                    <div class="product-badge">ГОСТ 31938-2012</div>
+                    <p>Высокопрочная замена металлу. В 9 раз легче, не ржавеет, поставляется в бухтах от 4 до 20 мм. Дешевле стали на 30-40%.</p>
+                    <a href="tel:88002227254" class="btn-buy">Узнать цену / Заказать</a>
+                </div>
+            </div>
+
+            <!-- Товар 2 -->
+            <div class="product-card">
+                <div class="product-image img-links">ГС</div>
+                <div class="product-info">
+                    <h3>Гибкие связи</h3>
+                    <div class="product-badge">Для многослойных стен</div>
+                    <p>Исключают "мостики холода" (теплопроводность всего 0,48 Вт/м²К). В 3 раза прочнее стали и на 50-60% дешевле.</p>
+                    <a href="tel:88002227254" class="btn-buy">Узнать цену / Заказать</a>
+                </div>
+            </div>
+
+            <!-- Товар 3 -->
+            <div class="product-card">
+                <div class="product-image img-mesh">КС</div>
+                <div class="product-info">
+                    <h3>Композитная сетка</h3>
+                    <div class="product-badge">Срок службы до 100 лет</div>
+                    <p>Для армирования бетона, полов и кирпичной кладки. В 6 раз легче стальных сеток, прочность на разрыв выше в 3-4 раза.</p>
+                    <a href="tel:88002227254" class="btn-buy">Узнать цену / Заказать</a>
+                </div>
+            </div>
+
+            <!-- Товар 4 -->
+            <div class="product-card">
+                <div class="product-image img-clips">ПФ</div>
+                <div class="product-info">
+                    <h3>Пластиковые фиксаторы</h3>
+                    <div class="product-badge">Высокопрочный полиэтилен</div>
+                    <p>Типы "Стульчик", "Звёздочка", "Кубик". Удерживают каркас арматуры в проектном положении и формируют защитный слой бетона.</p>
+                    <a href="tel:88002227254" class="btn-buy">Узнать цену / Заказать</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Раздел контактов -->
+        <div class="contacts-section">
+            <h3>Официальный отдел продаж завода</h3>
+            <p>Свяжитесь с нами для точного расчета объёмов, скидок от объёма и условий доставки до вашего объекта.</p>
+            <a href="tel:88002227254" class="main-phone">8 (800) 222-72-54</a>
+            <p style="color: #666; font-size: 0.95rem;">Дополнительный телефон: +7 (962) 761-55-08</p>
+            <p style="margin-top: 15px;"><strong>Адрес производства и склада:</strong> 404103, Волгоградская обл., г. Волжском, ул. им. Н.Д. Лопатникова, д. 25 Б</p>
+            <p><strong>Email:</strong> info@stekloplast34.ru</p>
+        </div>
     </div>
+
     <footer>
-        <p>© 2014-2026, ООО «СтеклоПласт». Все права защищены.</p>
+        <p>© 2014-2026, ООО «СтеклоПласт». Все права защищены. Использование материалов согласовано.</p>
     </footer>
+
 </body>
 </html>
